@@ -11,36 +11,36 @@ class ParticlesBackground extends React.Component {
   }
 
   componentDidMount() {
-    this.initCanvas();
-    this.createParticles();
-    this.animate();
-
-    // Add event handlers
-    window.addEventListener('resize', this.handleResize);
+    this.canvasRef.current.width = window.innerWidth;
+    this.canvasRef.current.height = window.innerHeight;
     
-    // Add mouse interaction
-    const canvas = this.canvasRef.current;
-    if (canvas) {
-      canvas.addEventListener('mousemove', this.handleMouseMove);
-      canvas.addEventListener('click', this.handleClick);
-    }
+    // Create initial particles
+    this.createParticles();
+    
+    // Start animation loop
+    this.animate();
+    
+    // Add event listeners
+    window.addEventListener('resize', this.handleResize);
+    window.addEventListener('mousemove', this.handleMouseMove);
+    window.addEventListener('click', this.handleClick);
+    
+
   }
 
   componentWillUnmount() {
     // Clean up
     window.removeEventListener('resize', this.handleResize);
-    
-    // Remove mouse interaction listeners
-    const canvas = this.canvasRef.current;
-    if (canvas) {
-      canvas.removeEventListener('mousemove', this.handleMouseMove);
-      canvas.removeEventListener('click', this.handleClick);
-    }
+    window.removeEventListener('mousemove', this.handleMouseMove);
+    window.removeEventListener('click', this.handleClick);
+
     
     if (this.animationFrame) {
       cancelAnimationFrame(this.animationFrame);
     }
   }
+  
+
 
   handleResize = () => {
     if (this.canvasRef.current) {

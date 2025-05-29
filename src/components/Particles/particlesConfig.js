@@ -1,4 +1,6 @@
 // Configuration for our custom Canvas particles animation
+
+
 const particlesConfig = {
   // Particle appearance
   particle: {
@@ -14,13 +16,13 @@ const particlesConfig = {
     bounce: true,      // Bounce off edges
   },
   
-  // Connection lines
+  // Connection lines between particles
   connections: {
     enable: true,
-    color: '#4CAF50',  
-    opacity: 0.3,       // Base opacity
-    maxDistance: 100,  // Max distance to draw connections
-    width: 1,          // Line width
+    color: '#4CAF50',  // Primary color (green)
+    opacity: 0.3,
+    maxDistance: 100,
+    width: 1,
   },
   
   // Interactivity

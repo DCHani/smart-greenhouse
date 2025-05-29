@@ -15,6 +15,8 @@ import Notifications from './pages/Notifications/Notifications';
 import Controls from './pages/Controls/Controls';
 import Settings from './pages/Settings/Settings';
 
+
+
 // Protected route component
 const ProtectedRoute = ({ children }) => {
   const { currentUser, loading } = useAuth();
@@ -54,6 +56,7 @@ const PublicRoute = ({ children }) => {
 };
 
 function App() {
+  
   return (
     <AuthProvider>
       <Router>

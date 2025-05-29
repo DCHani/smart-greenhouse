@@ -32,6 +32,15 @@ const Settings = () => {
     time: '24h',
   });
   
+  // Add state for profile picture
+  const [profilePicture, setProfilePicture] = useState({
+    url: currentUser?.avatar || 'https://i.pravatar.cc/150?img=12',
+    file: null,
+    preview: null,
+  });
+  
+
+  
   const handleProfileChange = (e) => {
     const { name, value } = e.target;
     setProfileForm(prev => ({ ...prev, [name]: value }));
@@ -49,6 +58,39 @@ const Settings = () => {
   const handleUnitChange = (setting, value) => {
     setUnits(prev => ({ ...prev, [setting]: value }));
   };
+  
+  // Handle profile picture file selection
+  const handleProfilePictureChange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    
+    // Create a preview URL for the selected image
+    const previewUrl = URL.createObjectURL(file);
+    
+    setProfilePicture({
+      url: profilePicture.url, // Keep the original URL
+      file: file,
+      preview: previewUrl,
+    });
+  };
+  
+  // Handle profile picture upload (would connect to backend in a real app)
+  const handleProfilePictureUpload = () => {
+    if (!profilePicture.file) return;
+    
+    // In a real app, you would upload the file to a server here
+    // For this demo, we'll just update the URL state
+    setProfilePicture({
+      url: profilePicture.preview,
+      file: null,
+      preview: null,
+    });
+    
+    // Update the user's avatar in the auth context (simplified)
+    alert('Profile picture updated successfully!');
+  };
+  
+
   
   const handleSaveProfile = (e) => {
     e.preventDefault();
@@ -90,6 +132,44 @@ const Settings = () => {
               <FiUser className="mr-2" size={20} />
               Profile Information
             </h2>
+            
+            {/* Profile Picture Section */}
+            <div className="flex flex-col items-center mb-6 sm:flex-row sm:items-start">
+              <div className="mb-4 sm:mb-0 sm:mr-6">
+                <div className="relative rounded-full overflow-hidden w-32 h-32 border-4 border-gray-100 shadow-md">
+                  <img 
+                    src={profilePicture.preview || profilePicture.url} 
+                    alt={profileForm.name || 'User'}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+              
+              <div className="flex flex-col space-y-3">
+                <h3 className="text-sm font-medium text-gray-700">Profile Picture</h3>
+                <p className="text-xs text-gray-500">Upload a new profile picture (JPG or PNG, max 2MB)</p>
+                
+                <label className="cursor-pointer inline-flex items-center px-4 py-2 border border-primary text-sm font-medium rounded-md text-primary hover:bg-primary hover:text-white transition-colors">
+                  <input
+                    type="file"
+                    accept="image/jpeg, image/png"
+                    onChange={handleProfilePictureChange}
+                    className="hidden"
+                  />
+                  Choose Image
+                </label>
+                
+                {profilePicture.file && (
+                  <button
+                    type="button"
+                    onClick={handleProfilePictureUpload}
+                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary-dark transition-colors"
+                  >
+                    Save Profile Picture
+                  </button>
+                )}
+              </div>
+            </div>
             
             <form onSubmit={handleSaveProfile} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -313,6 +393,8 @@ const Settings = () => {
           </div>
           
           {/* Units & Preferences */}
+
+          
           <div className="card animate-fadeIn delay-400 hover-lift">
             <h2 className="text-lg font-semibold text-gray-700 mb-4 flex items-center">
               <FiGlobe className="mr-2" size={20} />

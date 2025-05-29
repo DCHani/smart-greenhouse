@@ -40,24 +40,41 @@ const SignUp = () => {
   return (
     <div className="min-h-screen flex flex-col md:flex-row">
       {/* Left side - Image and info */}
-      <div className="hidden md:flex md:w-1/2 bg-gradient-to-br from-primary to-secondary items-center justify-center p-12">
-        <div className="max-w-lg text-white">
-          <h2 className="text-3xl font-bold mb-4">Join Our Smart Greenhouse Community</h2>
-          <p className="mb-8">Create an account to start monitoring and controlling your greenhouse environment with our cutting-edge IoT platform.</p>
+      <div className="hidden md:flex md:w-1/2 relative overflow-hidden">
+        {/* Greenhouse illustration */}
+        <div className="absolute inset-0 w-full h-full">
+          <img 
+            src="/assets/greenhouse-illustration.png" 
+            alt="Smart Greenhouse Illustration" 
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = 'https://i.imgur.com/jYYLGUd.png';
+            }}
+          />
+        </div>
+        
+        {/* Semi-transparent overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/70 to-secondary/70"></div>
+        
+        {/* Content */}
+        <div className="max-w-lg p-12 text-white relative z-10 h-full flex flex-col justify-center">
+          <h2 className="text-3xl font-bold mb-4 drop-shadow-md">Join Our Smart Greenhouse Community</h2>
+          <p className="mb-8 drop-shadow">Create an account to start monitoring and controlling your greenhouse environment with our cutting-edge IoT platform.</p>
           <div className="grid grid-cols-2 gap-4">
-            <div className="bg-white bg-opacity-20 p-4 rounded-lg">
+            <div className="bg-white/30 p-4 rounded-lg backdrop-blur-sm shadow-lg">
               <h3 className="font-bold mb-2">Easy Setup</h3>
               <p className="text-sm">Connect your greenhouse devices and start monitoring in minutes.</p>
             </div>
-            <div className="bg-white bg-opacity-20 p-4 rounded-lg">
+            <div className="bg-white/30 p-4 rounded-lg backdrop-blur-sm shadow-lg">
               <h3 className="font-bold mb-2">Custom Alerts</h3>
               <p className="text-sm">Set personalized notifications for critical greenhouse conditions.</p>
             </div>
-            <div className="bg-white bg-opacity-20 p-4 rounded-lg">
+            <div className="bg-white/30 p-4 rounded-lg backdrop-blur-sm shadow-lg">
               <h3 className="font-bold mb-2">Mobile Access</h3>
               <p className="text-sm">Manage your greenhouse from anywhere using our responsive web app.</p>
             </div>
-            <div className="bg-white bg-opacity-20 p-4 rounded-lg">
+            <div className="bg-white/30 p-4 rounded-lg backdrop-blur-sm shadow-lg">
               <h3 className="font-bold mb-2">Advanced Reports</h3>
               <p className="text-sm">Track performance and optimize your greenhouse operations.</p>
             </div>

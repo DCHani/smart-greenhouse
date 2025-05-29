@@ -139,24 +139,41 @@ const Login = () => {
       </div>
       
       {/* Right side - Image and info */}
-      <div className="hidden md:flex md:w-1/2 bg-gradient-to-br from-primary to-secondary items-center justify-center p-12">
-        <div className="max-w-lg text-white">
-          <h2 className="text-3xl font-bold mb-4">Smart Greenhouse Management System</h2>
-          <p className="mb-8">Monitor and control your greenhouse environment from anywhere. Access real-time data, automated systems, and optimize plant growth with our intelligent platform.</p>
+      <div className="hidden md:flex md:w-1/2 relative overflow-hidden">
+        {/* Greenhouse illustration */}
+        <div className="absolute inset-0 w-full h-full">
+          <img 
+            src="/assets/greenhouse-illustration.png" 
+            alt="Smart Greenhouse Illustration" 
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = 'https://i.imgur.com/jYYLGUd.png';
+            }}
+          />
+        </div>
+
+        {/* Semi-transparent overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/70 to-secondary/70"></div>
+
+        {/* Content */}
+        <div className="max-w-lg p-12 text-white relative z-10 h-full flex flex-col justify-center">
+          <h2 className="text-3xl font-bold mb-4 drop-shadow-md">Smart Greenhouse Management System</h2>
+          <p className="mb-8 drop-shadow">Monitor and control your greenhouse environment from anywhere. Access real-time data, automated systems, and optimize plant growth with our intelligent platform.</p>
           <div className="grid grid-cols-2 gap-4">
-            <div className="bg-white bg-opacity-20 p-4 rounded-lg">
+            <div className="bg-white/30 p-4 rounded-lg backdrop-blur-sm shadow-lg">
               <h3 className="font-bold mb-2">Remote Monitoring</h3>
               <p className="text-sm">Track temperature, humidity, and other vital metrics in real-time.</p>
             </div>
-            <div className="bg-white bg-opacity-20 p-4 rounded-lg">
+            <div className="bg-white/30 p-4 rounded-lg backdrop-blur-sm shadow-lg">
               <h3 className="font-bold mb-2">Smart Controls</h3>
               <p className="text-sm">Automate your greenhouse systems or control them manually from anywhere.</p>
             </div>
-            <div className="bg-white bg-opacity-20 p-4 rounded-lg">
+            <div className="bg-white/30 p-4 rounded-lg backdrop-blur-sm shadow-lg">
               <h3 className="font-bold mb-2">Energy Efficient</h3>
               <p className="text-sm">Optimize resource usage with intelligent recommendations and automation.</p>
             </div>
-            <div className="bg-white bg-opacity-20 p-4 rounded-lg">
+            <div className="bg-white/30 p-4 rounded-lg backdrop-blur-sm shadow-lg">
               <h3 className="font-bold mb-2">Data Analytics</h3>
               <p className="text-sm">Gain insights into your greenhouse performance with detailed reports.</p>
             </div>

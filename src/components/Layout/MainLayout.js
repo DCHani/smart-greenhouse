@@ -34,6 +34,12 @@ const MobileMenuButton = styled.button`
   box-shadow: ${theme.shadows.large};
   border: none;
   cursor: pointer;
+  animation: float 3s infinite ease-in-out;
+  transition: transform 0.2s;
+  
+  &:hover {
+    transform: scale(1.1);
+  }
   
   @media (max-width: ${theme.breakpoints.md}) {
     display: flex;
@@ -71,6 +77,7 @@ const SidebarHeader = styled.div`
 const LogoContainer = styled.div`
   display: flex;
   align-items: center;
+  animation: fadeIn 0.5s ease-in-out;
 `;
 
 const LogoImage = styled.img`
@@ -124,13 +131,14 @@ const NavLink = styled(Link)`
   padding: 0.75rem 1rem;
   border-radius: 0.375rem;
   font-size: ${theme.fontSizes.sm};
-  transition: background-color 0.2s, color 0.2s;
+  transition: background-color 0.2s, color 0.2s, transform 0.2s;
   color: ${({ active }) => active ? theme.colors.primary : theme.colors.textLight};
   background-color: ${({ active }) => active ? `${theme.colors.primary}10` : 'transparent'};
   font-weight: ${({ active }) => active ? '500' : 'normal'};
   
   &:hover {
     background-color: ${({ active }) => active ? `${theme.colors.primary}15` : '#f5f5f5'};
+    transform: translateX(5px);
   }
   
   span {
@@ -257,7 +265,7 @@ const MainLayout = ({ children }) => {
         <Navigation>
           <NavList>
             {menuItems.map((item, index) => (
-              <NavItem key={index}>
+              <NavItem key={index} className={`animate-slideInLeft delay-${index}00`}>
                 <NavLink
                   to={item.path}
                   active={location.pathname === item.path ? 1 : 0}

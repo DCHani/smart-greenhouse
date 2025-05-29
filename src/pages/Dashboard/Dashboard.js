@@ -68,14 +68,14 @@ const Dashboard = () => {
   
   return (
     <div className="p-6">
-      <div className="mb-8">
+      <div className="mb-8 animate-slideInUp">
         <h1 className="text-2xl font-bold text-gray-800">Welcome back, {currentUser?.name || 'User'}</h1>
         <p className="text-gray-600">Here's what's happening in your greenhouse today</p>
       </div>
       
       {/* Key metrics cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <div className="card">
+        <div className="card animate-fadeIn delay-100 hover-scale">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-semibold text-gray-700">Battery Status</h2>
             <FiBattery className={batteryLevel > 30 ? 'text-green-500' : 'text-red-500'} size={24} />
@@ -98,7 +98,7 @@ const Dashboard = () => {
           </div>
         </div>
         
-        <div className="card">
+        <div className="card animate-fadeIn delay-200 hover-scale">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-semibold text-gray-700">Fertilizer Level</h2>
             <FiDroplet className={fertilizer > 30 ? 'text-green-500' : 'text-red-500'} size={24} />
@@ -127,7 +127,7 @@ const Dashboard = () => {
           </div>
         </div>
         
-        <div className="card">
+        <div className="card animate-fadeIn delay-300 hover-scale">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-semibold text-gray-700">CO₂ Concentration</h2>
             <FiActivity className={co2Level < 900 ? 'text-green-500' : 'text-yellow-500'} size={24} />
@@ -155,7 +155,7 @@ const Dashboard = () => {
           </div>
         </div>
         
-        <div className="card">
+        <div className="card animate-fadeIn delay-400 hover-scale">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-semibold text-gray-700">Treatment Progress</h2>
             <FiTarget className="text-primary" size={24} />
@@ -179,7 +179,7 @@ const Dashboard = () => {
       </div>
       
       {/* Temperature chart */}
-      <div className="card mb-8">
+      <div className="card mb-8 animate-fadeIn delay-500">
         <h2 className="text-lg font-semibold text-gray-700 mb-4">Temperature Monitoring</h2>
         <div className="h-72">
           <ResponsiveContainer width="100%" height="100%">

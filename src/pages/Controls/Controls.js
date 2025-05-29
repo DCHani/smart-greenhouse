@@ -151,14 +151,14 @@ const Controls = () => {
   
   return (
     <div className="p-6">
-      <div className="mb-6">
+      <div className="mb-6 animate-slideInUp">
         <h1 className="text-2xl font-bold text-gray-800 mb-2">Smart Controls</h1>
-        <p className="text-gray-600">Manage and automate your greenhouse environment</p>
+        <p className="text-gray-600">Manage your greenhouse systems</p>
       </div>
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Lighting control */}
-        <div className="card">
+        <div className="card animate-slideInUp">
           <div className="flex items-start mb-6">
             <div className="p-3 rounded-lg bg-yellow-100 mr-4">
               <FiSun className="text-yellow-500" size={24} />
@@ -240,7 +240,7 @@ const Controls = () => {
         </div>
         
         {/* Temperature control */}
-        <div className="card">
+        <div className="card animate-fadeIn delay-200 hover-lift">
           <div className="flex items-start mb-6">
             <div className="p-3 rounded-lg bg-red-100 mr-4">
               <FiThermometer className="text-red-500" size={24} />
@@ -328,7 +328,7 @@ const Controls = () => {
         </div>
         
         {/* Irrigation control */}
-        <div className="card">
+        <div className="card animate-fadeIn delay-300 hover-lift">
           <div className="flex items-start mb-6">
             <div className="p-3 rounded-lg bg-blue-100 mr-4">
               <FiDroplet className="text-blue-500" size={24} />
@@ -378,10 +378,10 @@ const Controls = () => {
               </div>
               <button
                 onClick={startWatering}
-                disabled={irrigation.enabled}
-                className="px-3 py-1 bg-blue-500 text-white text-sm rounded-md hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={irrigation.enabled || irrigation.autoMode}
+                className={`px-4 py-2 rounded-md bg-primary text-white w-full mt-2 ${(irrigation.enabled || irrigation.autoMode) ? 'opacity-50 cursor-not-allowed' : 'hover:bg-primary-dark animate-pulse'}`}
               >
-                Water Now
+                Start Manual Watering
               </button>
             </div>
             
@@ -423,7 +423,7 @@ const Controls = () => {
         </div>
         
         {/* Ventilation control */}
-        <div className="card">
+        <div className="card animate-fadeIn delay-400 hover-lift">
           <div className="flex items-start mb-6">
             <div className="p-3 rounded-lg bg-gray-100 mr-4">
               <FiWind className="text-gray-500" size={24} />

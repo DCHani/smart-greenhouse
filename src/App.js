@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import GlobalStyle from './styles/GlobalStyle';
+import './styles/animations.css';
 
 // Layout Component
 import MainLayout from './components/Layout/MainLayout';

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { FiMail, FiLock, FiUser } from 'react-icons/fi';
+import { FiUser, FiMail, FiLock } from 'react-icons/fi';
 import { useAuth } from '../../context/AuthContext';
+import ParticlesBackground from '../../components/Particles/ParticlesBackground';
 
 const SignUp = () => {
   const [name, setName] = useState('');
@@ -38,7 +39,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row">
+    <div className="min-h-screen flex flex-col md:flex-row relative">
       {/* Left side - Image and info */}
       <div className="hidden md:flex md:w-1/2 relative overflow-hidden">
         {/* Greenhouse illustration */}
@@ -59,22 +60,22 @@ const SignUp = () => {
         
         {/* Content */}
         <div className="max-w-lg p-12 text-white relative z-10 h-full flex flex-col justify-center">
-          <h2 className="text-3xl font-bold mb-4 drop-shadow-md">Join Our Smart Greenhouse Community</h2>
-          <p className="mb-8 drop-shadow">Create an account to start monitoring and controlling your greenhouse environment with our cutting-edge IoT platform.</p>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="bg-white/30 p-4 rounded-lg backdrop-blur-sm shadow-lg">
+          <h2 className="text-3xl font-bold mb-4 drop-shadow-md animate-slideInLeft">Join Our Smart Greenhouse Community</h2>
+          <p className="mb-8 drop-shadow animate-slideInLeft delay-100">Create an account to start monitoring and controlling your greenhouse environment with our cutting-edge IoT platform.</p>
+          <div className="grid grid-cols-2 gap-4 animate-fadeIn delay-200">
+            <div className="bg-white/30 p-4 rounded-lg backdrop-blur-sm shadow-lg hover-lift hover-glow">
               <h3 className="font-bold mb-2">Easy Setup</h3>
               <p className="text-sm">Connect your greenhouse devices and start monitoring in minutes.</p>
             </div>
-            <div className="bg-white/30 p-4 rounded-lg backdrop-blur-sm shadow-lg">
+            <div className="bg-white/30 p-4 rounded-lg backdrop-blur-sm shadow-lg hover-lift hover-glow">
               <h3 className="font-bold mb-2">Custom Alerts</h3>
               <p className="text-sm">Set personalized notifications for critical greenhouse conditions.</p>
             </div>
-            <div className="bg-white/30 p-4 rounded-lg backdrop-blur-sm shadow-lg">
+            <div className="bg-white/30 p-4 rounded-lg backdrop-blur-sm shadow-lg hover-lift hover-glow">
               <h3 className="font-bold mb-2">Mobile Access</h3>
               <p className="text-sm">Manage your greenhouse from anywhere using our responsive web app.</p>
             </div>
-            <div className="bg-white/30 p-4 rounded-lg backdrop-blur-sm shadow-lg">
+            <div className="bg-white/30 p-4 rounded-lg backdrop-blur-sm shadow-lg hover-lift hover-glow">
               <h3 className="font-bold mb-2">Advanced Reports</h3>
               <p className="text-sm">Track performance and optimize your greenhouse operations.</p>
             </div>
@@ -83,9 +84,13 @@ const SignUp = () => {
       </div>
       
       {/* Right side - SignUp form */}
-      <div className="flex-1 flex flex-col justify-center items-center p-8">
-        <div className="w-full max-w-md">
-          <div className="text-center mb-8">
+      <div className="flex-1 flex flex-col justify-center items-center p-8 relative">
+        {/* Particles background */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <ParticlesBackground />
+        </div>
+        <div className="w-full max-w-md relative z-10 bg-white/90 p-8 rounded-lg shadow-lg">
+          <div className="text-center mb-8 animate-fadeIn">
             <h1 className="text-3xl font-bold text-gray-800 mb-2">Create Account</h1>
             <p className="text-gray-600">Join the Smart Greenhouse community</p>
           </div>
@@ -96,7 +101,7 @@ const SignUp = () => {
             </div>
           )}
           
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4 animate-fadeIn delay-100">
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
               <div className="relative">

@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FiMail, FiLock, FiUser } from 'react-icons/fi';
 import { FaGoogle, FaFacebook, FaLinkedin } from 'react-icons/fa';
 import { useAuth } from '../../context/AuthContext';
+import ParticlesBackground from '../../components/Particles/ParticlesBackground';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -33,11 +34,15 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row">
+    <div className="min-h-screen flex flex-col md:flex-row relative">
       {/* Left side - Login form */}
-      <div className="flex-1 flex flex-col justify-center items-center p-8">
-        <div className="w-full max-w-md">
-          <div className="text-center mb-8">
+      <div className="flex-1 flex flex-col justify-center items-center p-8 relative">
+        {/* Particles background */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <ParticlesBackground />
+        </div>
+        <div className="w-full max-w-md relative z-10 bg-white/90 p-8 rounded-lg shadow-lg">
+          <div className="text-center mb-8 animate-fadeIn">
             <h1 className="text-3xl font-bold text-gray-800 mb-2">Welcome Back</h1>
             <p className="text-gray-600">Login to your Smart Greenhouse dashboard</p>
           </div>
@@ -48,7 +53,7 @@ const Login = () => {
             </div>
           )}
           
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6 animate-fadeIn delay-100">
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
               <div className="relative">
@@ -104,7 +109,7 @@ const Login = () => {
             </div>
           </form>
           
-          <div className="mt-6">
+          <div className="mt-6 animate-fadeIn delay-200">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-gray-300"></div>
@@ -127,7 +132,7 @@ const Login = () => {
             </div>
           </div>
           
-          <div className="text-center mt-8">
+          <div className="text-center mt-8 animate-fadeIn delay-300">
             <p className="text-sm text-gray-600">
               Don't have an account?{' '}
               <Link to="/signup" className="font-medium text-primary hover:text-secondary">
@@ -158,22 +163,22 @@ const Login = () => {
 
         {/* Content */}
         <div className="max-w-lg p-12 text-white relative z-10 h-full flex flex-col justify-center">
-          <h2 className="text-3xl font-bold mb-4 drop-shadow-md">Smart Greenhouse Management System</h2>
-          <p className="mb-8 drop-shadow">Monitor and control your greenhouse environment from anywhere. Access real-time data, automated systems, and optimize plant growth with our intelligent platform.</p>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="bg-white/30 p-4 rounded-lg backdrop-blur-sm shadow-lg">
+          <h2 className="text-3xl font-bold mb-4 drop-shadow-md animate-slideInRight">Smart Greenhouse Management System</h2>
+          <p className="mb-8 drop-shadow animate-slideInRight delay-100">Monitor and control your greenhouse environment from anywhere. Access real-time data, automated systems, and optimize plant growth with our intelligent platform.</p>
+          <div className="grid grid-cols-2 gap-4 animate-fadeIn delay-200">
+            <div className="bg-white/30 p-4 rounded-lg backdrop-blur-sm shadow-lg hover-lift hover-glow">
               <h3 className="font-bold mb-2">Remote Monitoring</h3>
               <p className="text-sm">Track temperature, humidity, and other vital metrics in real-time.</p>
             </div>
-            <div className="bg-white/30 p-4 rounded-lg backdrop-blur-sm shadow-lg">
+            <div className="bg-white/30 p-4 rounded-lg backdrop-blur-sm shadow-lg hover-lift hover-glow">
               <h3 className="font-bold mb-2">Smart Controls</h3>
               <p className="text-sm">Automate your greenhouse systems or control them manually from anywhere.</p>
             </div>
-            <div className="bg-white/30 p-4 rounded-lg backdrop-blur-sm shadow-lg">
+            <div className="bg-white/30 p-4 rounded-lg backdrop-blur-sm shadow-lg hover-lift hover-glow">
               <h3 className="font-bold mb-2">Energy Efficient</h3>
               <p className="text-sm">Optimize resource usage with intelligent recommendations and automation.</p>
             </div>
-            <div className="bg-white/30 p-4 rounded-lg backdrop-blur-sm shadow-lg">
+            <div className="bg-white/30 p-4 rounded-lg backdrop-blur-sm shadow-lg hover-lift hover-glow">
               <h3 className="font-bold mb-2">Data Analytics</h3>
               <p className="text-sm">Gain insights into your greenhouse performance with detailed reports.</p>
             </div>

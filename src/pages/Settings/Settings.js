@@ -77,7 +77,7 @@ const Settings = () => {
   
   return (
     <div className="p-6">
-      <div className="mb-6">
+      <div className="mb-6 animate-slideInUp">
         <h1 className="text-2xl font-bold text-gray-800 mb-2">Settings</h1>
         <p className="text-gray-600">Manage your account and preferences</p>
       </div>
@@ -85,7 +85,7 @@ const Settings = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2">
           {/* Profile Settings */}
-          <div className="card mb-6">
+          <div className="card mb-6 animate-fadeIn delay-100 hover-lift">
             <h2 className="text-lg font-semibold text-gray-700 mb-4 flex items-center">
               <FiUser className="mr-2" size={20} />
               Profile Information
@@ -154,7 +154,7 @@ const Settings = () => {
               </div>
               
               <div>
-                <button type="submit" className="btn btn-primary">
+                <button type="submit" className="btn btn-primary hover-scale">
                   Save Changes
                 </button>
               </div>
@@ -162,7 +162,7 @@ const Settings = () => {
           </div>
           
           {/* Password Settings */}
-          <div className="card mb-6">
+          <div className="card mb-6 animate-fadeIn delay-200 hover-lift">
             <h2 className="text-lg font-semibold text-gray-700 mb-4 flex items-center">
               <FiLock className="mr-2" size={20} />
               Change Password
@@ -216,7 +216,7 @@ const Settings = () => {
               </div>
               
               <div>
-                <button type="submit" className="btn btn-primary">
+                <button type="submit" className="btn btn-primary hover-scale">
                   Update Password
                 </button>
               </div>
@@ -226,7 +226,7 @@ const Settings = () => {
         
         <div className="lg:col-span-1">
           {/* Notification Settings */}
-          <div className="card mb-6">
+          <div className="card mb-6 animate-fadeIn delay-300 hover-lift">
             <h2 className="text-lg font-semibold text-gray-700 mb-4 flex items-center">
               <FiBell className="mr-2" size={20} />
               Notifications
@@ -313,7 +313,7 @@ const Settings = () => {
           </div>
           
           {/* Units & Preferences */}
-          <div className="card">
+          <div className="card animate-fadeIn delay-400 hover-lift">
             <h2 className="text-lg font-semibold text-gray-700 mb-4 flex items-center">
               <FiGlobe className="mr-2" size={20} />
               Units & Preferences
